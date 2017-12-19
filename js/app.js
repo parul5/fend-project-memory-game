@@ -56,7 +56,6 @@ function shuffle(array) {
 var openedCards = [];
 
 function display(el) {
-	console.log(el.id);
 	$(el).addClass("show open");
 }
 
@@ -67,11 +66,13 @@ function addToOpen(el) {
 function hideCard(cardId) {
 	$("#" + cardId).toggleClass("show open");
 }
+
 $('.card').click(function () {
 	display(this);
 	addToOpen(this);
-	if (openedCards.length > 1) {
-		if (openedCards[openedCards.length - 2] !== openedCards[openedCards.length - 1]) {
+	var len = openedCards.length;
+	if (len > 1) {
+		if (openedCards[len - 1] !== openedCards[len - 2]) {
 			hideCard(openedCards.pop());
 			hideCard(openedCards.pop());
 		}
